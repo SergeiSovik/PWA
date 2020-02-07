@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="64px" height="64px" version="1.1" viewBox="0 0 64 64">
+	<defs>
+		<style type="text/css">
+			.str0 {stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+			.fil0 {fill:none}
+		</style>
+	</defs>
+	<line class="fil0 str0" x1="14" y1="14" x2="50" y2="50" />
+	<line class="fil0 str0" x1="50" y1="14" x2="14" y2="50" />
+</svg>

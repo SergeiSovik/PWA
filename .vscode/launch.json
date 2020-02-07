@@ -1,0 +1,16 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Run App",
+			"url": "https://127.0.0.1/bin/index.html",
+			"webRoot": "${workspaceFolder}",
+			"preLaunchTask": "build",
+			"runtimeArgs": [
+				"--ignore-certificate-errors",
+			],
+		}
+	]
+}

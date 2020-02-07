@@ -1,0 +1,9 @@
+{
+	"files.exclude" : {
+		// Uncomment to hide .map files from project explorer
+		//"**/*.js.map": true,
+		"bin/": true,
+		"tmp/": true,
+	},
+	"editor.formatOnSave": false,
+}

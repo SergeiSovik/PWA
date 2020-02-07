@@ -1,0 +1,38 @@
+body {
+	width: 100%;
+	height: 100%;
+
+	background: #ccc;
+	padding: 0;
+	margin: 0;
+	font: normal 0.14in sans-serif;
+	color: #000;
+	cursor: default;
+}
+
+#example {
+	position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#example > div {
+	position: relative;
+    background: #fff;
+    border: 0.05in #000 solid;
+    border-radius: 0.2in;
+    padding: 0.2in;
+}
+
+#close {
+	position: absolute;
+    right: -0.5in;
+    top: -0.5in;
+    width: 0.5in;
+    height: 0.5in;
+    background-image: url(./../images/static/cross.svg);
+    background-size: 100%;
+}

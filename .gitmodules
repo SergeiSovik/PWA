@@ -1,0 +1,3 @@
+[submodule "src/lib/js-template"]
+	path = src/lib/js-template
+	url = https://github.com/SergioRando/PWA-Library.git

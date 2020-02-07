@@ -1,0 +1,8 @@
+/closure-compiler
+/closure-compiler-fallback
+/closure-compiler-source
+/externs
+/jscomp
+gcc.jar
+*.tar
+*.gz

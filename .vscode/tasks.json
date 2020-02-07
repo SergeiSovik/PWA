@@ -1,0 +1,158 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "make",
+			"problemMatcher": {
+				"owner": "javascript",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"pattern": {
+					"regexp": "^(WARNING|ERROR):\\s+(.*):(\\d+):(\\d*):(\\d*)\\s+-\\s+(.*)$",
+					"file": 2,
+					"line": 3,
+					"column": 4,
+					"endColumn": 5,
+					"severity": 1,
+					"message": 6
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "rebuild",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"rebuild"
+			],
+			"group": "build",
+			"problemMatcher": {
+				"owner": "javascript",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"pattern": {
+					"regexp": "^(WARNING|ERROR):\\s+(.*):(\\d+):(\\d*):(\\d*)\\s+-\\s+(.*)$",
+					"file": 2,
+					"line": 3,
+					"column": 4,
+					"endColumn": 5,
+					"severity": 1,
+					"message": 6
+				}
+			}
+		},
+		{
+			"label": "build release",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"release"
+			],
+			"group": "build",
+			"problemMatcher": {
+				"owner": "javascript",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"pattern": {
+					"regexp": "^(WARNING|ERROR):\\s+(.*):(\\d+):(\\d*):(\\d*)\\s+-\\s+(.*)$",
+					"file": 2,
+					"line": 3,
+					"column": 4,
+					"endColumn": 5,
+					"severity": 1,
+					"message": 6
+				}
+			}
+		},
+		{
+			"label": "build debug",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"debug"
+			],
+			"group": "build",
+			"problemMatcher": {
+				"owner": "javascript",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"pattern": {
+					"regexp": "^(WARNING|ERROR):\\s+(.*):(\\d+):(\\d*):(\\d*)\\s+-\\s+(.*)$",
+					"file": 2,
+					"line": 3,
+					"column": 4,
+					"endColumn": 5,
+					"severity": 1,
+					"message": 6
+				}
+			}
+		},
+		{
+			"label": "test",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"test"
+			],
+			"group": "build",
+			"problemMatcher": {
+				"owner": "javascript",
+				"fileLocation": [
+					"relative",
+					"${workspaceFolder}"
+				],
+				"pattern": {
+					"regexp": "^(WARNING|ERROR):\\s+(.*):(\\d+):(\\d*):(\\d*)\\s+-\\s+(.*)$",
+					"file": 2,
+					"line": 3,
+					"column": 4,
+					"endColumn": 5,
+					"severity": 1,
+					"message": 6
+				}
+			}
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"clean"
+			],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "backup",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"backup"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "help",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"help"
+			],
+			"problemMatcher": []
+		}
+	]
+}
