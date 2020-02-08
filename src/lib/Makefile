@@ -21,7 +21,7 @@ endif
 # Make all submakes exclude externs and include
 
 TOPTARGETS := all test clean
-SUBDIRS := $(sort $(dir $(wildcard */)))
+SUBDIRS := $(sort $(dir $(wildcard js-*/)))
 
 all: $(SUBDIRS)
 

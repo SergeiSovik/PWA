@@ -23,7 +23,12 @@ endif
 TOPTARGETS := all test clean
 SUBDIRS := $(sort $(dir $(filter-out externs/ include/ external/, $(wildcard */))))
 
-all: $(SUBDIRS)
+all: $(SUBDIRS) ../bin/index.html
+
+../bin/index.html: index.html
+	@echo "Updating $(patsubst ../%,%,$@)"
+	@mkdir -p $(dir $@)
+	@./../compiler/minify.sh "$@" "$(patsubst ../bin/%,%,$@)" "strings.conf" "text/html"
 
 $(TOPTARGETS): $(SUBDIRS)
 $(SUBDIRS):

@@ -57,7 +57,7 @@ REL_BIN ?= $(REL_ROOT)/$(ABS_BIN)
 
 ## Libraries
 # List of all libraries
-LIBS=$(shell find ./$(REL_ROOT)/src/lib -maxdepth 1 -mindepth 1 -type d -name "*")
+LIBS=$(shell find ./$(REL_ROOT)/src/lib -maxdepth 1 -mindepth 1 -type d -name "js-*")
 # List of all libraries names
 LIB_NAMES=$(patsubst ./$(REL_ROOT)/src/lib/%,%,$(LIBS))
 # List of included libraries names

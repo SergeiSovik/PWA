@@ -95,7 +95,7 @@ function service(self) {
 				//console.log('Cache Or Fetch', sFile);
 				return cacheOrFetch(cCache, oRequest);
 			}
-			// If Request Not In Static Resource List, But Detected As Static, Then Add And Remember In Cache
+			// If Request Not In Static Resource List, But Detected As Static, Then Add And Remember In Cache (Once)
 			else if ((sFile.indexOf('appicon/') === 0) || (sFile.indexOf('images/static/') === 0)) {
 				aStaticResources.push(sFile);
 				const cCache = await caches.open(sCacheStatic);
