@@ -114,6 +114,7 @@ _Note: be careful executing **rm** commands! It delete files permanenlty!_
 - **build release** - rebuild release project
 - **build debug** - rebuild debug project
 - **help** - show Google Closure Compiler help
+- **merge** - merge all git upstreams, update templates
 
 # Config
 ## String substitution

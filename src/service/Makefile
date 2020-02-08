@@ -124,3 +124,5 @@ clean:
 	@echo "Cleaning $(ABS_BIN)"
 	@rm -r -f $(BIN_MAIN_ECMASCRIPT2015) $(BIN_MAIN_ECMASCRIPT2017)
 	@rm -r -f $(BIN_MAIN_ECMASCRIPT2015).map $(BIN_MAIN_ECMASCRIPT2017).map
+
+merge:

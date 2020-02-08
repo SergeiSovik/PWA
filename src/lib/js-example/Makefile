@@ -117,3 +117,5 @@ $(BIN_MAIN): $(REL_GLOBALS) $(REL_MODULES) $(REL_EXTERNAL) $(REL_LIBS)
 clean:
 	@echo "Cleaning $(ABS_BIN)"
 	@rm -r -f $(REL_BIN)
+
+merge:

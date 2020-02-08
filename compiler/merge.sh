@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #
 # Copyright 2020 Sergio Rando <segio.rando@yahoo.com>
 #
@@ -14,24 +16,11 @@
 # limitations under the License.
 #
 
-ifndef PROJECT_DIR
-$(error Use make only inside Project dir, submake requires variable imports)
-endif
+echo ""
+echo "Merging $PWD"
+echo ""
 
-# Make all submakes exclude externs and include
+git fetch upstream 2>&1
+git merge upstream/master 2>&1
 
-TOPTARGETS := all test clean merge
-SUBDIRS := $(sort $(dir $(filter-out externs/ include/ external/, $(wildcard */))))
-
-all: $(SUBDIRS) ../bin/index.html
-
-../bin/index.html: index.html
-	@echo "Updating $(patsubst ../%,%,$@)"
-	@mkdir -p $(dir $@)
-	@./../compiler/minify.sh "$@" "$(patsubst ../bin/%,%,$@)" "strings.conf" "text/html"
-
-$(TOPTARGETS): $(SUBDIRS)
-$(SUBDIRS):
-	+@make -s -C $@ $(MAKECMDGOALS)
-
-.PHONY: $(TOPTARGETS) $(SUBDIRS)
+exit 0

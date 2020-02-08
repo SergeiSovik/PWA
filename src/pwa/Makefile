@@ -205,3 +205,5 @@ $(BIN_MAIN_ECMASCRIPT2017): $(REL_GLOBALS) $(REL_MODULES) $(REL_EXTERNAL) $(REL_
 clean:
 	@echo "Cleaning $(ABS_BIN)"
 	@rm -r -f $(REL_BIN)
+
+merge:

@@ -112,3 +112,7 @@ help:
 backup:
 	@mkdir -p $(BACKUP_DIR)
 	@tar --exclude='./$(BACKUP_DIR)' --exclude='./bin' --exclude='./tmp' -pczf "$(BACKUP_DIR)/$(DIR_NAME)-$(TIMESTAMP).tar.gz" .
+
+merge:
+	@make -s -C src merge
+	@$(PROJECT_DIR)/compiler/merge.sh

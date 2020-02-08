@@ -153,6 +153,15 @@
 				"help"
 			],
 			"problemMatcher": []
+		},
+		{
+			"label": "merge",
+			"type": "shell",
+			"command": "make",
+			"args": [
+				"merge"
+			],
+			"problemMatcher": []
 		}
 	]
 }
