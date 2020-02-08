@@ -6,4 +6,5 @@
 		"tmp/": true,
 	},
 	"editor.formatOnSave": false,
+	"git.autofetch": true,
 }
