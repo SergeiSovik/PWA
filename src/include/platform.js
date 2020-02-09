@@ -87,6 +87,19 @@ var FixedInt32Array = function(va_args) {
 
 platform['FixedInt32Array'] = FixedInt32Array;
 
+const DoubleArrayFallback = (typeof Float64Array !== 'undefined' ? Float64Array : Array);
+
+/**
+ * @suppress {duplicate}
+ * @param {...*} va_args
+ * @returns {Array<number>}
+ */
+var FixedDoubleArray = function(va_args) {
+	let args = /** @type {Array} */ ( Array.prototype.slice.call(arguments, 0) );
+	return /** @type {Array<number>} */ ( new (Function.prototype.bind.apply(DoubleArrayFallback, [null].concat(args))) );
+}
+
+platform['FixedDoubleArray'] = FixedDoubleArray;
 
 function toHex(n) {
 	var high = ('00' + ((n >> 24) & 0xFF).toString(16)).substr(-2);
