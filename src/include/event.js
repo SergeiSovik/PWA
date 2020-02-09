@@ -69,9 +69,12 @@ var EventDOMContentLoadedHandler;
  * @param {EventDOMContentLoadedHandler | null} fEventHandler
  */
 export function bindOnDocumentReady(fEventHandler) {
-    if (document.readyState === "interactive" || document.readyState === "complete") {
-        fEventHandler({ "target": document, "type": document.readyState, "bubbles": true, "cancelable": false });
+	let domDocument = platform.document || null;
+	if (domDocument === null) {
+		fEventHandler({ 'target': null, 'type': 'complete', 'bubbles': true, 'cancelable': false });
+	} else if (domDocument.readyState === 'interactive' || domDocument.readyState === 'complete') {
+        fEventHandler({ 'target': domDocument, 'type': domDocument.readyState, 'bubbles': true, 'cancelable': false });
     } else {
-        bindEvent(document, evDocumentReady, fEventHandler);
+        bindEvent(domDocument, evDocumentReady, fEventHandler);
     }
 }
