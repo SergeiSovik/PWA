@@ -92,7 +92,7 @@ ln -s "$JARFILE" "$SHDIR/gcc.jar"
 echo "Downloading/Updating Google Closure Compiler Sources"
 
 if [ ! -d ~/.gcc/compiler/closure-compiler-source ]; then
-	git clone https://github.com/google/closure-compiler.git ~/.git/compiler/closure-compiler-source
+	git clone https://github.com/google/closure-compiler.git ~/.gcc/compiler/closure-compiler-source
 else
 	cd ~/.gcc/compiler/closure-compiler-source
 	git pull origin master
