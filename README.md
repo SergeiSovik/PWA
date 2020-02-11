@@ -100,6 +100,11 @@ rm -r ~/.gcc/compiler
 ```
 _Note: be careful executing **rm** commands! It delete files permanenlty!_
 
+# Install submodules
+```
+git submodule update --init
+```
+
 # Build Example
 1. Launch Visual Studio Code
 2. Open folder ~/.gcc/template
