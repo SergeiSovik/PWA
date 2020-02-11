@@ -46,6 +46,12 @@ function clone(oSource) {}
 function FixedInt32Array(va_args) {}
 
 /**
+ * @param {...*} va_args
+ * @returns {Array<number>}
+ */
+function FixedDoubleArray(va_args) {}
+
+/**
  * @param {string} n
  * @param {Array<number>} a
  */
