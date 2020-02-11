@@ -82,7 +82,16 @@ const Int32ArrayFallback = (typeof Int32Array !== 'undefined' ? Int32Array : Arr
  */
 var FixedInt32Array = function(va_args) {
 	let args = /** @type {Array} */ ( Array.prototype.slice.call(arguments, 0) );
-	return /** @type {Array<number>} */ ( new (Function.prototype.bind.apply(Int32ArrayFallback, [null].concat(args))) );
+
+	// FIX: Safari bug Type error
+	//return /** @type {Array<number>} */ ( new (Function.prototype.bind.apply(Int32ArrayFallback, [null].concat(args))) );
+	
+	if (args.length === 0) {
+		return /** @type {Array<number>} */ ( new Int32ArrayFallback() );
+	} else if (args.length === 1) {
+		return /** @type {Array<number>} */ ( new Int32ArrayFallback(args[0]) );
+	}
+	return /** @type {Array<number>} */ ( new Int32ArrayFallback(args) );
 }
 
 platform['FixedInt32Array'] = FixedInt32Array;
@@ -96,7 +105,16 @@ const DoubleArrayFallback = (typeof Float64Array !== 'undefined' ? Float64Array 
  */
 var FixedDoubleArray = function(va_args) {
 	let args = /** @type {Array} */ ( Array.prototype.slice.call(arguments, 0) );
-	return /** @type {Array<number>} */ ( new (Function.prototype.bind.apply(DoubleArrayFallback, [null].concat(args))) );
+	
+	// FIX: Safari bug Type error
+	//return /** @type {Array<number>} */ ( new (Function.prototype.bind.apply(DoubleArrayFallback, [null].concat(args))) );
+	
+	if (args.length === 0) {
+		return /** @type {Array<number>} */ ( new DoubleArrayFallback() );
+	} else if (args.length === 1) {
+		return /** @type {Array<number>} */ ( new DoubleArrayFallback(args[0]) );
+	}
+	return /** @type {Array<number>} */ ( new DoubleArrayFallback(args) );
 }
 
 platform['FixedDoubleArray'] = FixedDoubleArray;

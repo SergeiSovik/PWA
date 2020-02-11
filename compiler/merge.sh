@@ -20,6 +20,18 @@ echo ""
 echo "Merging $PWD"
 echo ""
 
+# TODO: Add Upstream on a new Clone
+#gitlist="$( git remote -v )"
+#reline="^([^ 	]+)[ 	]+([^ 	]+)[ 	]+\((.*)\)$"
+#while IFS= read -r line; do
+#    echo "$line"
+#    if [[ "$line" =~ $reline ]]; then
+#        echo "${BASH_REMATCH[1]}"
+#	    echo "${BASH_REMATCH[2]}"
+#	    echo "${BASH_REMATCH[3]}"
+#    fi
+#done < <(printf '%s\n' "$gitlist")
+
 git fetch upstream 2>&1
 git merge upstream/master 2>&1
 

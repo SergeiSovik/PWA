@@ -94,6 +94,11 @@ ln -r -s ../src .
 
 _Note: don't forget to change README.md_
 
+## 6. Install submodules
+```
+git submodule update --init
+```
+
 # Update
 
 ## Update Template
@@ -116,11 +121,6 @@ rm -r ~/.gcc/template
 rm -r ~/.gcc/compiler
 ```
 _Note: be careful executing **rm** commands! It delete files permanenlty!_
-
-# Install submodules
-```
-git submodule update --init
-```
 
 # Build Example
 1. Launch Visual Studio Code
