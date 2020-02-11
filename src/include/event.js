@@ -29,6 +29,9 @@ var EventHandler;
  * @param {EventHandler} fEventHandler
  */
 export function bindEvent(oElement, sEvent, fEventHandler) {
+	if (oElement === undefined)
+		return;
+
     if (oElement.addEventListener) {
         oElement.addEventListener(sEvent, fEventHandler, false);
     } else if (oElement.attachEvent) {
@@ -43,6 +46,9 @@ export function bindEvent(oElement, sEvent, fEventHandler) {
  * @param {EventHandler} fEventHandler
  */
 export function unbindEvent(oElement, sEvent, fEventHandler) {
+	if (oElement === undefined)
+		return;
+
     if (oElement.addEventListener) {
         oElement.removeEventListener(sEvent, fEventHandler, false);
     } else if (oElement.detachEvent) {
