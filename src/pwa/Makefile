@@ -184,19 +184,19 @@ $(BIN_LAUNCHER):
 	@echo "//# sourceMappingURL=$(patsubst $(REL_BIN)/%,%,$@).map" >> $@
 	@sed -i 's:\"src/:\"../src/:g' $@.map
 
-$(BIN_MAIN_STABLE): $(REL_GLOBALS) $(REL_MODULES) $(REL_EXTERNAL) $(REL_LIBS)
+$(BIN_MAIN_STABLE): $(REL_GLOBALS) $(REL_MODULES) $(REL_EXTERNAL) $(REL_LIBS) Makefile
 	@echo "Building $(patsubst $(REL_ROOT)/%,%,$@)"
 	@( cd $(REL_ROOT); $(strip $(GCC)) $(GCC_STABLE) $(GCC_PLATFORM) $(GCC_EXTERNAL) $(GCC_LIBS) $(GCC_MODULES) $(GCC_GLOBALS) --create_source_map "$(patsubst $(REL_ROOT)/%,%,$@).map" --js_output_file "$(patsubst $(REL_ROOT)/%,%,$@)" 2>&1 | ./compiler/errors.sh )
 	@echo "//# sourceMappingURL=$(patsubst $(REL_BIN)/%,%,$@).map" >> $@
 	@sed -i 's:\"src/:\"../src/:g' $@.map
 
-$(BIN_MAIN_ECMASCRIPT2015): $(REL_GLOBALS) $(REL_MODULES) $(REL_EXTERNAL) $(REL_LIBS)
+$(BIN_MAIN_ECMASCRIPT2015): $(REL_GLOBALS) $(REL_MODULES) $(REL_EXTERNAL) $(REL_LIBS) Makefile
 	@echo "Building $(patsubst $(REL_ROOT)/%,%,$@)"
 	@( cd $(REL_ROOT); $(strip $(GCC)) $(GCC_ECMASCRIPT2015) $(GCC_PLATFORM) $(GCC_EXTERNAL) $(GCC_LIBS) $(GCC_MODULES) $(GCC_GLOBALS) --create_source_map "$(patsubst $(REL_ROOT)/%,%,$@).map" --js_output_file "$(patsubst $(REL_ROOT)/%,%,$@)" 2>&1 | ./compiler/errors.sh )
 	@echo "//# sourceMappingURL=$(patsubst $(REL_BIN)/%,%,$@).map" >> $@
 	@sed -i 's:\"src/:\"../src/:g' $@.map
 
-$(BIN_MAIN_ECMASCRIPT2017): $(REL_GLOBALS) $(REL_MODULES) $(REL_EXTERNAL) $(REL_LIBS)
+$(BIN_MAIN_ECMASCRIPT2017): $(REL_GLOBALS) $(REL_MODULES) $(REL_EXTERNAL) $(REL_LIBS) Makefile
 	@echo "Building $(patsubst $(REL_ROOT)/%,%,$@)"
 	@( cd $(REL_ROOT); $(strip $(GCC)) $(GCC_ECMASCRIPT2017) $(GCC_PLATFORM) $(GCC_EXTERNAL) $(GCC_LIBS) $(GCC_MODULES) $(GCC_GLOBALS) --create_source_map "$(patsubst $(REL_ROOT)/%,%,$@).map" --js_output_file "$(patsubst $(REL_ROOT)/%,%,$@)" 2>&1 | ./compiler/errors.sh )
 	@echo "//# sourceMappingURL=$(patsubst $(REL_BIN)/%,%,$@).map" >> $@
