@@ -118,24 +118,3 @@ var FixedDoubleArray = function(va_args) {
 }
 
 platform['FixedDoubleArray'] = FixedDoubleArray;
-
-function toHex(n) {
-	var high = ('00' + ((n >> 24) & 0xFF).toString(16)).substr(-2);
-	var low = ('000000' + (n & 0xFFFFFF).toString(16)).substr(-6);
-	return high + low;
-}
-
-/**
- * @suppress {duplicate}
- * @param {string} n
- * @param {Array<number>} a
- */
-var intdump = function(n, a) {
-	var s = [];
-	for (var i = 0; i < a.length; i++) {
-		s.push('0x' + toHex(a[i]));
-	}
-	console.log(n, s.join(', '));
-}
-
-platform['intdump'] = intdump;
