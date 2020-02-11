@@ -2,7 +2,7 @@
 
 **JavaScript Progressive Web Application Project Template for Google Closure Compiler and Visual Studio Code IDE**
 
-This Template is only for **Linux Ubuntu** and have not been tested other platforms
+This Template is for **Linux** and **Mac OS**
 
 # Install
 Read full installation process before executing any command
@@ -13,10 +13,27 @@ Register one GitHub account, if u dont have it already
 ## 2. Visual Studio Code
 Download and install **Visual Studio Code** from official link https://code.visualstudio.com/
 
-## 3. Install Command Line Tools
+## 3. Install Command Line Tools (Linux)
 Super user password required
 ```
 sudo apt-get install git make minify default-jre nodejs
+```
+* Git - required to execute git commands
+* Make - required to execute Makefiles
+* Minify - required for HTML/CSS minification
+* Java Runtime Environment (JRE) - required to launch Google Closure Compiler
+* NodeJS - required for testing libraries
+
+## 3. Install Command Line Tools (MacOS)
+Super user password required
+Install [Java Runtime Environment (JRE)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+Install [Homebrew (The Missing Package Manager for macOS)](https://brew.sh/)
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+Install Packeges
+```
+brew install git make minify node
 ```
 * Git - required to execute git commands
 * Make - required to execute Makefiles
