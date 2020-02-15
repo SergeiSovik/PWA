@@ -30,10 +30,10 @@ LAUNCHER=launcher.js
 MAIN=main.js
 
 # List of global modules, executed before main module
-GLOBALS=$(patsubst ./%,%,$(shell find ./globals -type f -name "*.js"))
+GLOBALS=$(patsubst ./%,%,$(shell find ./globals/ -type f -name "*.js"))
 
 # List of dependency modules, executed only if included in main or global modules
-MODULES=$(patsubst ./%,%,$(shell find ./modules -type f -name "*.js"))
+MODULES=$(patsubst ./%,%,$(shell find ./modules/ -type f -name "*.js"))
 
 # List of external modules, executed only if included in main or global modules
 define EXTERNAL
@@ -59,7 +59,7 @@ REL_BIN ?= $(REL_ROOT)/$(ABS_BIN)
 
 ## Libraries
 # List of all libraries
-LIBS=$(shell find ./$(REL_ROOT)/src/lib -maxdepth 1 -mindepth 1 -type d -name "js-*")
+LIBS=$(shell find ./$(REL_ROOT)/src/lib/ -maxdepth 1 -mindepth 1 -type d -name "js-*")
 # List of all libraries names
 LIB_NAMES=$(patsubst ./$(REL_ROOT)/src/lib/%,%,$(LIBS))
 # List of included libraries names
@@ -120,15 +120,15 @@ GCC_PLATFORM=$(patsubst %,--js %,$(INC_PLATFORM))
 
 ## Resources
 # All Resources
-SRC_CSS=$(patsubst ./%,%,$(shell find ./css -type f -name "*" -not -name ".*" -not -name "*.md"))
-SRC_HTML=$(patsubst ./%,%,$(shell find . -type f -name "*.html"))
-SRC_IMAGES=$(patsubst ./%,%,$(shell find ./images -type f -name "*" -not -name ".*" -not -name "*.md"))
-SRC_SOUNDS=$(patsubst ./%,%,$(shell find ./sounds -type f -name "*" -not -name ".*" -not -name "*.md"))
-SRC_FAVICON=$(patsubst ./%,%,$(shell find . -type f -name "favicon.*"))
-SRC_APPICON=$(patsubst ./%,%,$(shell find ./appicon -type f \( -name "*.png" -o -name "*.svg" \) ))
-SRC_MANIFEST=$(patsubst ./%,%,$(shell find . -type f -name "manifest.webmanifest"))
-SRC_PHP=$(patsubst ./%,%,$(shell find . -type f -name "*.php"))
-SRC_INCLUDE=$(patsubst ./%,%,$(shell find ./include -type f -name "*" -not -name ".*" -not -name "*.md"))
+SRC_CSS=$(patsubst ./%,%,$(shell find ./css/ -type f -name "*" -not -name ".*" -not -name "*.md"))
+SRC_HTML=$(patsubst ./%,%,$(shell find ./ -type f -name "*.html"))
+SRC_IMAGES=$(patsubst ./%,%,$(shell find ./images/ -type f -name "*" -not -name ".*" -not -name "*.md"))
+SRC_SOUNDS=$(patsubst ./%,%,$(shell find ./sounds/ -type f -name "*" -not -name ".*" -not -name "*.md"))
+SRC_FAVICON=$(patsubst ./%,%,$(shell find ./ -type f -name "favicon.*"))
+SRC_APPICON=$(patsubst ./%,%,$(shell find ./appicon/ -type f \( -name "*.png" -o -name "*.svg" \) ))
+SRC_MANIFEST=$(patsubst ./%,%,$(shell find ./ -type f -name "manifest.webmanifest"))
+SRC_PHP=$(patsubst ./%,%,$(shell find ./ -type f -name "*.php"))
+SRC_INCLUDE=$(patsubst ./%,%,$(shell find ./include/ -type f -name "*" -not -name ".*" -not -name "*.md"))
 
 # List of resources for simple copy to binary
 SRC_UNCOMPRESSED=$(SRC_IMAGES) $(SRC_SOUNDS) $(SRC_FAVICON) $(SRC_APPICON) $(SRC_INCLUDE)
