@@ -16,7 +16,8 @@
 
 'use strict';
 
-/** @typedef {HTMLCanvasElement | HTMLImageElement} HTMLTexture */ var HTMLTexture;
+/** @typedef {HTMLCanvasElement | HTMLImageElement} HTMLTexture */
+export var HTMLTexture;
 
 /** @abstract */
 export class TextureImpl {
