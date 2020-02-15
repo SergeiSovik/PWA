@@ -32,6 +32,6 @@ all: $(SUBDIRS) ../bin/index.html
 
 $(TOPTARGETS): $(SUBDIRS)
 $(SUBDIRS):
-	+@make -s -C $@ $(MAKECMDGOALS)
+	+@make -j 8 -s -C $@ $(MAKECMDGOALS)
 
 .PHONY: $(TOPTARGETS) $(SUBDIRS)

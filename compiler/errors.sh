@@ -32,9 +32,9 @@ while IFS= read -r line; do
 			errmessage="${BASH_REMATCH[4]}"
 			parse=true
 			errmore=""
-			if [ "$errseverity" = "ERROR" ]; then
+			#if [ "$errseverity" = "ERROR" ]; then
 				error=true
-			fi
+			#fi
 		else
 			>&2 echo "$line"
 		fi

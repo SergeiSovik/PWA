@@ -93,11 +93,11 @@ rebuild: clean build-debug
 
 build-release:
 	clear
-	+@make -j 8 -s -C src GCC="$(GCC_RELEASE)"
+	+@make -s -C src GCC="$(GCC_RELEASE)"
 
 build-debug:
 	clear
-	+@make -j 8 -s -C src GCC="$(GCC_DEBUG)"
+	+@make -s -C src GCC="$(GCC_DEBUG)"
 
 test:
 	clear
