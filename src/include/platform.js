@@ -65,6 +65,20 @@ if (ROOT === null) {
 
 /**
  * @suppress {duplicate}
+ * @type {boolean}
+ */
+var MOBILE = (platform['navigator'] === undefined) ? false : (
+	(navigator.userAgent.match(/Android/i)
+		|| navigator.userAgent.match(/webOS/i)
+		|| navigator.userAgent.match(/iPhone/i)
+		|| navigator.userAgent.match(/iPad/i)
+		|| navigator.userAgent.match(/iPod/i)
+		|| navigator.userAgent.match(/BlackBerry/i)
+		|| navigator.userAgent.match(/Windows Phone/i)) ? true : false
+	);
+
+/**
+ * @suppress {duplicate}
  * @param {*} oTarget 
  * @param  {...*} va_args
  * @returns {*} target

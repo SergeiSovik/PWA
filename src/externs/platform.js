@@ -32,6 +32,11 @@ var platform;
 var ROOT;
 
 /**
+ * @type {boolean}
+ */
+var MOBILE;
+
+/**
  * @param {*} oTarget 
  * @param  {...*} va_args
  * @returns {*} target
