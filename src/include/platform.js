@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Sergio Rando <segio.rando@yahoo.com>
+ * Copyright 2000-2020 Sergio Rando <segio.rando@yahoo.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,44 @@ var platform = /** @type {Window} */ (
 	(eval("this['Math']") == Math) ? this :
 	('object' == typeof globalThis && globalThis) ? globalThis : null
 );
+
+/**
+ * @suppress {duplicate}
+ * @type {string | null}
+ */
+var ROOT = platform['ROOT'] || null;
+if (ROOT === null) {
+	try {
+		throw new Error();
+	} catch (oError) {
+		let eError = /** @type {Error} */ ( oError );
+		let aStackLines = eError.stack.split('\n');
+		let reFind = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+		let reParse = /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/;
+		for (let iIndex in aStackLines) {
+			/** @type {Array<string | undefined> | null} */ let reaLine;
+			/** @type {string | null} */ let sFirst = null;
+			let aStackLine = aStackLines[iIndex | 0].replace('Object.<anonymous> (', 'Object.<anonymous> (file://');
+			while ((reaLine = reFind.exec(aStackLine)) != null) {
+				if (sFirst === null) sFirst = reaLine[1];
+			}
+			if (sFirst) {
+				/** @type {Array<string | undefined> | null} */ let reaURI = reParse.exec(sFirst);
+				let jIndex = 14;
+				while (jIndex--) reaURI[jIndex] = reaURI[jIndex] || '';
+				let sPath = (reaURI[1] != '' ? reaURI[1] + '://' : '') +
+					((reaURI[4] != '' || reaURI[5] != '') ? reaURI[4] + ':' + reaURI[5] + '@' : '') +
+					reaURI[6] +
+					(reaURI[7] != '' ? ':' + reaURI[7] : '') +
+					reaURI[10].replace(/\/$/, '');
+				ROOT = sPath + '/';
+				break;
+			}
+		}
+	}
+
+	platform['ROOT'] = ROOT;
+}
 
 /**
  * @suppress {duplicate}

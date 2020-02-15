@@ -27,6 +27,11 @@
 var platform;
 
 /**
+ * @type {string}
+ */
+var ROOT;
+
+/**
  * @param {*} oTarget 
  * @param  {...*} va_args
  * @returns {*} target

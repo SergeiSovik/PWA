@@ -83,13 +83,13 @@ export GCC_OUT_STABLE=--language_out STABLE
 export GCC_OUT_ECMASCRIPT_2015=--language_out ECMASCRIPT_2015
 export GCC_OUT_ECMASCRIPT_2017=--language_out ECMASCRIPT_2017
 
-all: build-release
+all: build-debug
 
 release: clean build-release
 
 debug: clean build-debug
 
-rebuild: clean build-release
+rebuild: clean build-debug
 
 build-release:
 	clear

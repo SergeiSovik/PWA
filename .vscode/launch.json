@@ -4,6 +4,24 @@
 		{
 			"type": "chrome",
 			"request": "launch",
+			"preLaunchTask": "build",
+			"name": "Debug Crome Library",
+			"url": "file://${workspaceFolder}/tmp/lib/js-template/test.js.html",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"preLaunchTask": "build",
+			"name": "Debug Node Library",
+			"program": "${workspaceFolder}/tmp/lib/js-template/test.js",
+			"skipFiles": [
+				"<node_internals>/**"
+			]
+		},
+		{
+			"type": "chrome",
+			"request": "launch",
 			"name": "Run App",
 			"url": "https://127.0.0.1/bin/index.html",
 			"webRoot": "${workspaceFolder}",
