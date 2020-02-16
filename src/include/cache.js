@@ -52,14 +52,20 @@ export async function cacheFetch(cCache, oRequest) {
 		oRequest = new Request(oRequest);
 	}
 
-	const oResponse = await fetch(oRequest.clone());
-	if (oResponse.ok) {
-		cCache.put(oRequest, oResponse.clone());
-	} else {
-		console.error("Cache Fetch Error", oResponse);
-	}
-
-    return oResponse;
+	return new Promise(function(fnResolve, fnReject) {
+		fetch(oRequest.clone()).then(function(oResponse) {
+			if ((oResponse.ok) || ((oResponse.status >= 400) && (oResponse.status < 500)))
+				cCache.put(oRequest, oResponse.clone());
+			fnResolve(oResponse);
+		}).catch(function(oResponse) {
+			if ((oResponse.status >= 400) && (oResponse.status < 500)) {
+				cCache.put(oRequest, oResponse.clone());
+				fnResolve(oResponse);
+			} else {
+				fnReject(oResponse);
+			}
+		});
+	});
 }
 
 /**
@@ -75,12 +81,24 @@ export async function cacheOrFetch(cCache, oRequest) {
 		let oCachePromise = cCache.match(oRequest).then(function(oResponse) {
 			if (oResponse)
 				fnResolve(oResponse);
-			return Error('Cache not found');
 		});
 
-		fetch(oRequest.clone()).then(fnResolve).catch(function(oResponse) {
-			oCachePromise.catch(function() {
-				fnReject(oResponse);
+		fetch(oRequest.clone()).then(function(oResponse) {
+			if ((oResponse.ok) || ((oResponse.status >= 400) && (oResponse.status < 500))) {
+				cCache.put(oRequest, oResponse.clone());
+				fnResolve(oResponse);
+			} else {
+				oCachePromise.then(function() {
+					fnReject(oResponse);
+				});
+			}
+		}).catch(function(oResponse) {
+			oCachePromise.then(function() {
+				if ((oResponse.status >= 400) && (oResponse.status < 500)) {
+					cCache.put(oRequest, oResponse.clone());
+					fnResolve(oResponse);
+				} else
+					fnReject(oResponse);
 			});
 		});
 	});
@@ -99,33 +117,22 @@ export async function cacheThenFetch(cCache, oRequest) {
 		let oCachePromise = cCache.match(oRequest).then(function(oResponse) {
 			if (oResponse)
 				fnResolve(oResponse);
-			return Error('Cache not found');
 		});
 
 		fetch(oRequest.clone()).then(function(oResponse) {
-			cCache.put(oRequest, oResponse.clone());
-			oCachePromise.catch(function() {
+			if ((oResponse.ok) || ((oResponse.status >= 400) && (oResponse.status < 500)))
+				cCache.put(oRequest, oResponse.clone());
+			oCachePromise.then(function() {
 				fnResolve(oResponse);
 			});
 		}).catch(function(oResponse) {
-			oCachePromise.catch(function() {
-				fnReject(oResponse);
+			oCachePromise.then(function() {
+				if ((oResponse.status >= 400) && (oResponse.status < 500)) {
+					cCache.put(oRequest, oResponse.clone());
+					fnResolve(oResponse);
+				} else
+					fnReject(oResponse);
 			});
 		});
 	});
-}
-
-/**
- * @param {string} sUri
- * @param {XMLHttpRequest} ajaxRequest
- */
-export function cacheAjaxRequest(cCache, sUri, ajaxRequest) {
-	const sContentType = ajaxRequest.getResponseHeader('content-type');
-	const oResponse = new Response(ajaxRequest.response, {
-		headers: {
-			'content-type': sContentType
-		}
-	});
-
-	cCache.put(sUri, oResponse);
 }
