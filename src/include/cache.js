@@ -114,3 +114,18 @@ export async function cacheThenFetch(cCache, oRequest) {
 		});
 	});
 }
+
+/**
+ * @param {string} sUri
+ * @param {XMLHttpRequest} ajaxRequest
+ */
+export function cacheAjaxRequest(cCache, sUri, ajaxRequest) {
+	const sContentType = ajaxRequest.getResponseHeader('content-type');
+	const oResponse = new Response(ajaxRequest.response, {
+		headers: {
+			'content-type': sContentType
+		}
+	});
+
+	cCache.put(sUri, oResponse);
+}
