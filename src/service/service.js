@@ -53,20 +53,22 @@ function service(self) {
 	const dirScope = ((self.registration) ? self.registration.scope : (self.scope || dirBase)).replace(/\/$/, "") + '/';
 	console.log('Scope', dirScope);
 
+	const fnInstall = async function() {
+		await caches.delete(sCacheStatic);
+	
+		const cCache = await caches.open(sCacheStatic);
+	
+		await Promise.all(aStaticResources.map(function(sResource) {
+			return cacheFetch(cCache, dirBase + sResource);
+		}));
+	
+		console.log("Service Installed (Service Static PreCache Load Complete)");
+	}
+
 	this.addEventListener("install",
 		function(oEvent) {
 			console.log("Service Installation...");
-			oEvent.waitUntil(async function() {
-				await caches.delete(sCacheStatic);
-			
-				const cCache = await caches.open(sCacheStatic);
-			
-				await Promise.all(aStaticResources.map(function(sResource) {
-					return cacheFetch(cCache, dirBase + sResource);
-				}));
-			
-				console.log("Service Installed (Service Static PreCache Load Complete)");
-			});
+			oEvent.waitUntil(fnInstall());
 		}
 	);
 
