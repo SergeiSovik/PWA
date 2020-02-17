@@ -93,6 +93,7 @@ export class CSS {
 		let iIndex = aRules[0];
 		this.deleteRule(iIndex);
 		this.insertRule(sRule, sDefineBlock, iIndex);
+		return true;
 	}
 
 	/**
