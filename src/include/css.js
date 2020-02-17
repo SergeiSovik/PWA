@@ -53,6 +53,7 @@ export class CSS {
 		if (aRules.length > 0)
 			return false;
 		this.insertRule(sRule, sDefineBlock);
+		return true;
 	}
 
 	/**
@@ -76,8 +77,8 @@ export class CSS {
 
 	/**
 	 * Update rule if exists
-	 * @param {*} sRule 
-	 * @param {*} sDefineBlock 
+	 * @param {string} sRule 
+	 * @param {string} sDefineBlock 
 	 * @returns {boolean} false - not exists
 	 */
 	update(sRule, sDefineBlock) {
@@ -96,8 +97,8 @@ export class CSS {
 
 	/**
 	 * Replace rule if exists, or create new
-	 * @param {*} sRule 
-	 * @param {*} sDefineBlock 
+	 * @param {string} sRule 
+	 * @param {string} sDefineBlock 
 	 */
 	replace(sRule, sDefineBlock) {
 		if (this.update(sRule, sDefineBlock))
