@@ -133,7 +133,7 @@ export class CSS {
 		if (iIndex === undefined) {
 			this.oRules.push(sRule);
 		} else {
-			this.oRules.splice(iIndex, 0, sRUle);
+			this.oRules.splice(iIndex, 0, sRule);
 		}
 
 		if (this.oSheet['insertRule']) {
