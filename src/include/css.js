@@ -100,7 +100,7 @@ export class CSS {
 	 * @param {*} sDefineBlock 
 	 */
 	replace(sRule, sDefineBlock) {
-		if (update(sRule, sDefineBlock))
+		if (this.update(sRule, sDefineBlock))
 			return;
 		
 		this.insertRule(sRule, sDefineBlock);
