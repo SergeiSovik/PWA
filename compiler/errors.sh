@@ -59,7 +59,7 @@ while IFS= read -r line; do
 	fi
 done < "${1:-/dev/stdin}"
 
-if [ $parse ]; then
+if [ "$parse" == true ]; then
 	err="${errseverity}: ${errfile}:${errline}:: -"
 	>&2 printf "${err} ${errseverity}: ${errmessage}\n"
 fi
