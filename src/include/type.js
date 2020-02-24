@@ -30,11 +30,27 @@ const ArrayTypeList = [
 ]
 
 /**
- * @param {*} oTarget 
+ * @param {*} oTarget
+ * @returns {boolean} 
+ */
+export function isBoolean(oTarget) {
+	return typeof oTarget === 'boolean';
+}
+
+/**
+ * @param {*} oTarget
+ * @returns {boolean} 
+ */
+export function isNumber(oTarget) {
+	return typeof oTarget === 'number';
+}
+
+/**
+ * @param {*} oTarget
  * @returns {boolean}
  */
-export function isArray(oTarget) {
-	return ArrayTypeList.indexOf(Object.prototype.toString.call(oTarget)) >= 0;
+export function isInteger(oTarget) {
+	return Number.isInteger(/** @type {number} */ ( oTarget ));
 }
 
 /**
@@ -43,6 +59,22 @@ export function isArray(oTarget) {
  */
 export function isString(oTarget) {
 	return typeof oTarget === 'string';
+}
+
+/**
+ * @param {*} oTarget 
+ * @returns {boolean}
+ */
+export function isArray(oTarget) {
+	return ArrayTypeList.indexOf(Object.prototype.toString.call(oTarget)) >= 0;
+}
+
+/**
+ * @param {*} oTarget 
+ * @returns {boolean}
+ */
+export function isList(oTarget) {
+	return typeof oTarget === 'object' && oTarget !== null && oTarget.constructor === Array;
 }
 
 /**
@@ -57,14 +89,6 @@ export function isDictionary(oTarget) {
  * @param {*} oTarget 
  * @returns {boolean}
  */
-export function isList(oTarget) {
-	return typeof oTarget === 'object' && oTarget !== null && oTarget.constructor === Array;
-}
-
-/**
- * @param {*} oTarget 
- * @returns {boolean}
- */
 export function isListOfDictionaries(oTarget) {
 	if (!isList(oTarget)) return false;
 	let aList = /** @type {Array} */ ( oTarget );
@@ -72,12 +96,4 @@ export function isListOfDictionaries(oTarget) {
 		if (!isDictionary(aList[iIndex])) return false;
 	}
 	return true;
-}
-
-/**
- * @param {*} oTarget
- * @returns {boolean}
- */
-export function isInteger(oTarget) {
-	return Number.isInteger(/** @type {number} */ ( oTarget ));
 }
