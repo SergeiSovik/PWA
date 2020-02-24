@@ -18,4 +18,4 @@
 
 export const Example = "Example String From Global Module Library 'js-example1'";
 
-console.log('js-example1', Example);
+console.log('js-example1/global', Example);

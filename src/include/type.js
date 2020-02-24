@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Sergio Rando <segio.rando@yahoo.com>
+ * Copyright 2000-2020 Sergio Rando <segio.rando@yahoo.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,21 @@
  * limitations under the License.
  */
 
-"use strict";
+'use strict';
 
-import { Example as ModuleExample } from "./modules/module.js"
-import { Example as ExternalExample } from "./../../../src/external/example.js"
+const ArrayTypeList = [
+	"[object Array]",
+	"[object Int8Array]",
+	"[object Int16Array]",
+	"[object Int32Array]",
+	"[object Uint8Array]",
+	"[object Uint8ClampedArray]",
+	"[object Uint16Array]",
+	"[object Uint32Array]",
+	"[object Float32Array]",
+	"[object Float64Array]"
+]
 
-platform.console.log('js-example1/test', ModuleExample);
-platform.console.log('js-example1/test', ExternalExample);
+export function isArray(oTarget) {
+	return ArrayTypeList.indexOf(Object.prototype.toString.call(oTarget)) >= 0;
+}

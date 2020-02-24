@@ -17,3 +17,5 @@
 "use strict";
 
 export const Example = "Example String From Dependency Module Library 'js-example1'";
+
+console.log('js-example1/module', Example);
