@@ -54,6 +54,14 @@ export function isDictionary(oTarget) {
 }
 
 /**
+ * @param {*} oTarget 
+ * @returns {boolean}
+ */
+export function isList(oTarget) {
+	return typeof oTarget === 'object' && oTarget !== null && oTarget.constructor === Array;
+}
+
+/**
  * @param {*} oTarget
  * @returns {boolean}
  */
