@@ -29,6 +29,18 @@ const ArrayTypeList = [
 	"[object Float64Array]"
 ]
 
+/**
+ * @param {*} oTarget 
+ * @returns {boolean}
+ */
 export function isArray(oTarget) {
 	return ArrayTypeList.indexOf(Object.prototype.toString.call(oTarget)) >= 0;
+}
+
+/**
+ * @param {*} oTarget
+ * @returns {boolean} 
+ */
+export function isString(oTarget) {
+	return typeof oTarget === 'string';
 }
