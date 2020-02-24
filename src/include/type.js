@@ -44,3 +44,19 @@ export function isArray(oTarget) {
 export function isString(oTarget) {
 	return typeof oTarget === 'string';
 }
+
+/**
+ * @param {*} oTarget
+ * @returns {boolean}
+ */
+export function isDictionary(oTarget) {
+	return typeof oTarget === 'object' && oTarget !== null && oTarget.constructor === Object;
+}
+
+/**
+ * @param {*} oTarget
+ * @returns {boolean}
+ */
+export function isInteger(oTarget) {
+	return Number.isInteger(/** @type {number} */ ( oTarget ));
+}
