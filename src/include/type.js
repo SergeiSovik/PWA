@@ -62,6 +62,19 @@ export function isList(oTarget) {
 }
 
 /**
+ * @param {*} oTarget 
+ * @returns {boolean}
+ */
+export function isListOfDictionaries(oTarget) {
+	if (!isList(oTarget)) return false;
+	let aList = /** @type {Array} */ ( oTarget );
+	for (let iIndex = aList.length - 1; iIndex >= 0; iIndex++) {
+		if (!isDictionary(aList[iIndex])) return false;
+	}
+	return true;
+}
+
+/**
  * @param {*} oTarget
  * @returns {boolean}
  */
