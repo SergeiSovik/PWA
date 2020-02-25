@@ -97,3 +97,6 @@ export function isListOfDictionaries(oTarget) {
 	}
 	return true;
 }
+
+/** @dict */
+export class Dictionary {}
