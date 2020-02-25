@@ -73,6 +73,20 @@ export function isArray(oTarget) {
  * @param {*} oTarget 
  * @returns {boolean}
  */
+export function isArrayOfStrings(oTarget) {
+	if (!isList(oTarget)) return false;
+
+	for (let iIndex = oTarget.length - 1; iIndex >= 0; iIndex--) {
+		if (typeof oTarget[iIndex] !== 'string') return false;
+	}
+
+	return true;
+}
+
+/**
+ * @param {*} oTarget 
+ * @returns {boolean}
+ */
 export function isList(oTarget) {
 	return typeof oTarget === 'object' && oTarget !== null && oTarget.constructor === Array;
 }
